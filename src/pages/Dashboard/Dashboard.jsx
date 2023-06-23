@@ -1,6 +1,12 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 
 const Dashboard = () => {
+  useEffect (() => {
+        axios.get("https://reqres.in/api/users?page=1").then(data => {
+            console.log('check', data)
+        })
+    }, [])
   return (
     <div className="md:pt-24 md:px-8">
       <div className="page-header pb-0 mb-0 border-0">
