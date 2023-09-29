@@ -27,7 +27,7 @@ const headCells = [
   { id: "productId", label: "ID" },
   { id: "productImage", label: "Hình ảnh"  },
   { id: "productName", label: "Tên sản phẩm" },
-  { id: "productWarrantyPeriod", label: "Sô tháng BH",align: "center", },
+  { id: "productWarrantyPeriod", label: "Số tháng BH",align: "center", },
   { id: "productPrice", label: "Giá tiền" },
   { id: "productStatus", label: "Trạng thái" },
   {
@@ -42,7 +42,8 @@ const headCellsManager = [
   { id: "productImage", label: "Hình ảnh", align: "left" },
 
   { id: "productName", label: "Tên Sản Phẩm" },
-  { id: "productPrice", label: "Gía" },
+  { id: "productWarrantyPeriod", label: "Số tháng BH",align: "center", },
+  { id: "productPrice", label: "Giá tiền" },
   // { id: "productQuantity", label: "Quantity" },
   { id: "productStatus", label: "Trạng thái" },
 ];
@@ -246,7 +247,7 @@ const Products = () => {
                                   : "badge badge-soft-danger fz-12"
                               }
                             >
-                              {item.productStatus}
+                              {item.productStatus === "Active" ? "Khả Dụng" : "Không Khả dụng"}
                             </span>
                           </TableCell>
                         )}

@@ -26,9 +26,9 @@ import authService from "../../features/auth/authService";
 const headCells = [
   { id: "couponId", label: "ID" },
   { id: "couponCode", label: "Mã Khuyễn Mãi" },
-  { id: "couponStartDate", label: "Ngày bắt đầu" },
-  { id: "couponEndDate", label: "Ngày kết thúc" },
-  { id: "numberOfTimesToUse", label: "Số lượng" },
+  { id: "couponStartDate", label: "Ngày bắt đầu",align:"center" },
+  { id: "couponEndDate", label: "Ngày kết thúc" ,align:"center"},
+  { id: "numberOfTimesToUse", label: "Số lượng" ,align:"center"},
   { id: "garageNamee", label: "Garage" },
   { id: "couponStatus", label: "Trạng thái" },
 ];
@@ -36,9 +36,9 @@ const headCells = [
 const headCellsManager = [
   { id: "couponId", label: "ID" },
   { id: "couponCode", label: "Mã Khuyễn Mãi" },
-  { id: "couponStartDate", label: "Ngày bắt đầu" },
-  { id: "couponEndDate", label: "Ngày kết thúc" },
-  { id: "numberOfTimesToUse", label: "Số lượng" },
+  { id: "couponStartDate", label: "Ngày bắt đầu" ,align: "center",},
+  { id: "couponEndDate", label: "Ngày kết thúc",align: "center", },
+  { id: "numberOfTimesToUse", label: "Số lượng" ,align: "center",},
   { id: "couponStatus", label: "Trạng thái" },
 ];
 
@@ -200,18 +200,18 @@ const Coupon = () => {
                           <div>{item.couponCode}</div>
                         </TableCell>
                         {/* start date */}
-                        <TableCell sx={{ border: "none" }}>
+                        <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"35px"  }}>
                           <div className="mb-1">
                             <strong>{item.couponStartDate}</strong>
                           </div>
                         </TableCell>
                         {/* End date*/}
-                        <TableCell sx={{ border: "none" }}>
+                        <TableCell sx={{ border: "none"  ,textAlign:"center", paddingRight:"35px" }}>
                           <div className="mb-1">
                             <strong>{item.couponEndDate}</strong>
                           </div>
                         </TableCell>
-                        <TableCell sx={{ border: "none" }}>
+                        <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"35px" }}>
                           <div className="mb-1">
                             <div>{item.numberOfTimesToUse}</div>
                           </div>
@@ -260,7 +260,7 @@ const Coupon = () => {
                                   : "badge badge-soft-danger fz-12"
                               }
                             >
-                              {item.couponStatus}
+                              {item.couponStatus === "Activate" ? "Khả Dụng" : "Không Khả dụng"}
                             </span>
                           </TableCell>
                         )}

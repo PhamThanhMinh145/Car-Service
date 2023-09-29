@@ -257,7 +257,7 @@ const Services = () => {
                                   : "badge badge-soft-danger fz-12"
                               }
                             >
-                              {item.serviceStatus}
+                              {item.serviceStatus === "Activate" ? "Khả Dụng" : "Không Khả dụng"}
                             </span>
                           </TableCell>
                         )}
