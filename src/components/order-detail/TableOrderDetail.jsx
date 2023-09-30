@@ -340,18 +340,18 @@ const TableOrderDetail = ({
       <div className="row justify-content-md-end mb-3">
         <div className="col-md-9 col-lg-8">
           <dl className="row gy-1 text-sm-right">
-            <dt className="col-5">Giá đơn hàng tạm tính</dt>
+            <dt className="col-5">Tổng tiền dịch vụ</dt>
             <dd className="col-6 title-color">
               <strong>{booking.originalPrice}</strong>
             </dd>
-            <dt className="col-5">Giá trị khuyến mãi</dt>
+            <dt className="col-5">Voucher từ garage</dt>
             <dd className="col-6 title-color">-{booking.discountPrice}</dd>
-            <dt className="col-5 ">Giá đơn hàng sau khuyến mãi</dt>
+            <dt className="col-5 ">Thành tiền</dt>
             <dd className="col-6 title-color">
               <strong>{booking.totalPrice}</strong>
             </dd>
             <dt className="col-5 ">
-              <strong>Giá đơn hàng khách phải trả</strong>
+              <strong>Tổng tiền khách phải trả</strong>
             </dt>
             <dd className="col-6 title-color">
               <strong>{booking.finalPrice}</strong>

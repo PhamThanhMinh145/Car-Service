@@ -55,7 +55,7 @@ const OwnerDetail = () => {
           <ul className="nav nav-tabs flex-wrap page-header-tabs">
             {tabs.map((tap) => (
               <li
-                style={{ backgroundColor: "#f9f9fb" }}
+                style={{ backgroundColor: "#f9f9fb", zIndex: 10 }}
                 className="nav-item"
                 key={tap}
               >
