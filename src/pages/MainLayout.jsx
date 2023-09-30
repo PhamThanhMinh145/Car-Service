@@ -2,10 +2,8 @@ import NavBar from "../components/navbar-sidebar/Navbar";
 import React, { useEffect, useState } from "react";
 import { useStateContext } from "../contexts/ContextProvider";
 import Sidebar from "../components/navbar-sidebar/Sidebar";
-
 import { Outlet } from "react-router-dom";
 import Notification from "../components/Notification";
-import { useSelector } from "react-redux";
 import authService from "../features/auth/authService";
 
 const MainLayout = () => {
@@ -46,7 +44,7 @@ const MainLayout = () => {
             <>
               {screenSize <= 1200 ? (
                 <div>
-                  <div className="w-0">
+                  <div className="w-0 h-screen">
                     <Sidebar />
                   </div>
                 </div>

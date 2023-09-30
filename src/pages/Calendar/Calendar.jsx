@@ -1,4 +1,3 @@
-import { useMediaQuery } from "@mui/material";
 import { CalendarToolbar } from "../../components/calendar/calendar-toolbar";
 import Header from "../../components/Header";
 import React, { useRef, useState, useCallback, useMemo } from "react";
@@ -16,8 +15,8 @@ import { getCalendarBooking } from "../../features/book/bookingSlide";
 import { useDialog } from "../../components/calendar/use-dialog";
 import CalendarEventDialog from "../../components/calendar/calendar-event-dialog";
 import authService from "../../features/auth/authService";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { viVN } from '@mui/material/locale';
+import { useStateContext } from "../../contexts/ContextProvider";
+
 const useEvents = (garage) => {
   const user = authService.getCurrentUser();
   const role = user?.roleName;
@@ -52,9 +51,15 @@ const useCurrentEvent = (events, dialogData) => {
   }, [dialogData, events]);
 };
 const Calendars = () => {
+
   useEffect(() => {
     document.title = "Lịch đặt hàng";
   }, []);
+
+  const {
+    setScreenSize,
+    screenSize,
+  } = useStateContext();
 
   const [date, setDate] = useState(new Date());
   const calendarRef = useRef(null);
@@ -65,26 +70,38 @@ const Calendars = () => {
   const updateDialog = useDialog();
   const viewEvent = useCurrentEvent(events, updateDialog.data);
 
+  // set view calendar
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+    
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  console.log(screenSize);
   const handleScreenResize = useCallback(() => {
     const calendarEl = calendarRef.current;
 
     if (calendarEl) {
       const calendarApi = calendarEl.getApi();
-      const newView = mdUp ? "dayGridMonth" : "timeGridDay";
+      const newView = screenSize > 1000 ? "dayGridMonth" : "timeGridDay";
 
       calendarApi.changeView(newView);
       setView(newView);
     }
-  }, [calendarRef, mdUp]);
+  }, [calendarRef, screenSize]);
 
   useEffect(
     () => {
       handleScreenResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mdUp]
+    [screenSize]
   );
 
+  // end set view
   const handleEventSelect = useCallback(
     (arg) => {
       updateDialog.handleOpen({
