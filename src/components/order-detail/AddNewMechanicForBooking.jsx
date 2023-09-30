@@ -9,6 +9,10 @@ import {
 import authService from "../../features/auth/authService";
 import Button from "../filter/Button";
 import "../../styles/button.scss";
+import Tooltip from "@mui/material/Tooltip";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
   const currentUser = authService.getCurrentUser();
   const dispatch = useDispatch();
@@ -26,7 +30,10 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
   const mechanicOptions = mechanicsAvaliable.map((item) => ({
     fullName: item.fullName,
     mechanicId: item.mechanicId,
+    level: item.level
   }));
+
+  // console.log(mechanicOptions);
 
   // Kiểm tra dữ liệu trước khi sử dụng
   mechanicOptions.forEach((option) => {
@@ -48,13 +55,13 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
 
   const resetForm = () => {
     setValue(null);
-    
+
   };
-  
+
 
   return (
     <div>
-      <form  className="flex flex-row justify-center" autoComplete="off">
+      <form className="flex flex-row justify-center" autoComplete="off">
         <Autocomplete
           size="small"
           value={value}
@@ -73,6 +80,20 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
           isOptionEqualToValue={(option, value) =>
             option.mechanicId === value.mechanicId
           }
+          renderOption={(props, option) => (
+            <List component="ul" {...props}>
+              <ListItem>
+                <Tooltip title={option.level} arrow>
+                  <ListItemText
+                    // primary={option.fullName}
+                    primary={option.fullName}
+                  />
+                </Tooltip>
+              </ListItem>
+            </List>
+          )}
+
+
         />
 
         <div className="card flex-row ml-10">

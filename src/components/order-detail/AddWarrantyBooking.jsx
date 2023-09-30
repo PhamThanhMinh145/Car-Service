@@ -9,6 +9,7 @@ import {
   Stack,
   TextField,
   TextareaAutosize,
+  Typography,
 } from "@mui/material";
 import dayjs from "dayjs";
 import Button from "../filter/Button";
@@ -17,8 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import DateTime from "../filter/DateTime";
 import {
   GetTimeBooking,
-  
+
 } from "../../features/book/bookingSlide";
+import Tooltip from "@mui/material/Tooltip";
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 20;
@@ -33,19 +35,18 @@ const MenuProps = {
 
 const useDetail = () => {
   const detail = useSelector((state) => state.booking.detail);
-  
+  console.log("detail:", detail);
   const newServices = useMemo(() => {
-    return detail.map((item) =>
-      item?.serviceBookingDetailDto.serviceWarranty !== "" &&
-      item?.isNew === true && item?.bookingDetailStatus === "Done"
-        ? {
-            serviceId: item?.serviceDetailId,
-            serviceDuration: item?.serviceBookingDetailDto?.serviceDuration,
+    return detail.filter((item) => item?.serviceBookingDetailDto.serviceWarranty !== "" &&
+      item?.isNew === true && item?.bookingDetailStatus === "Done")
+      .map((item) =>( {
+        serviceId: item?.serviceDetailId,
+          serviceDuration: item?.serviceBookingDetailDto?.serviceDuration,
             serviceName: item?.serviceBookingDetailDto?.serviceName,
-            productName: item?.productBookingDetailDto?.productName,
-          }
-        : ""
-    );
+              productName: item?.productBookingDetailDto?.productName,
+        }
+
+      ));
   }, [detail]);
   return newServices;
 };
@@ -54,6 +55,7 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
   const garageId = useSelector((state) => state.booking?.garage?.garageId);
   const times = useSelector((state) => state.booking?.durations);
   const data = useDetail();
+  console.log(data);
   const [time, setTime] = useState("");
   const [reason, setReason] = useState("");
   const [service, setService] = useState([]);
@@ -70,7 +72,7 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
       ),
       garageId: garageId,
     };
-    
+
     dispatch(GetTimeBooking(data));
   }, [date, service, dispatch, garageId]);
 
@@ -121,7 +123,10 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
-                <Chip key={value?.serviceId} label={value?.serviceName} />
+                <Tooltip key={value?.serviceId} title={<Typography sx={{ fontSize: '12px' }}>Sản phẩm: {value?.productName}</Typography>} placement="bottom">
+
+                  <Chip key={value?.serviceId} label={value?.serviceName} />
+                </Tooltip>
               ))}
             </Box>
           )}
@@ -154,8 +159,8 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
               item?.isAvailable === false
                 ? "error"
                 : item?.hour === time
-                ? "success"
-                : "default"
+                  ? "success"
+                  : "default"
             }
             onClick={() => {
               setTime(item?.hour);
