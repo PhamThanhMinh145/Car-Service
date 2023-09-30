@@ -108,8 +108,8 @@ const EmployeeByGarage = () => {
                           >
                             {" "}
                             {item.mechanicStatus === "Available"
-                              ? "Khả Dụng"
-                              : "Không Khả Dụng"}{" "}
+                              ? "Rảnh"
+                              : "Đang bận"}{" "}
                           </span>
                         </TableCell>
                       </TableRow>

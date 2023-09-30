@@ -75,7 +75,7 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
           id="controllable-states-demo"
           options={mechanicOptions}
           sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Mechanic" />}
+          renderInput={(params) => <TextField {...params} label="Thợ sửa chữa" />}
           getOptionLabel={(option) => option?.fullName}
           isOptionEqualToValue={(option, value) =>
             option.mechanicId === value.mechanicId
@@ -85,7 +85,7 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
               <ListItem>
                 <Tooltip title={option.level} arrow>
                   <ListItemText
-                    // primary={option.fullName}
+                   
                     primary={option.fullName}
                   />
                 </Tooltip>

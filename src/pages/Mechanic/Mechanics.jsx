@@ -1,9 +1,7 @@
 import "../../styles/button.scss";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import Search from "../../components/filter/Search";
-import SearchIcon from "@mui/icons-material/Search";
-import InputAdornment from "@mui/material/InputAdornment";
+
 import Button from "../../components/filter/Button";
 import AddIcon from "@mui/icons-material/Add";
 import { TableBody, TableCell, TableRow, Tooltip } from "@mui/material";
@@ -29,11 +27,9 @@ const headCells = [
   { id: "fullName", label: "Tên thợ" },
 
   { id: "contact", label: "Thông tin liện hệ" },
-   { id: "level", label: "Cấp bậc" },
-  { id: "totalOrders", label: "SL đơn" ,
-  align: "center",},
-  { id: "userStatus", label: "Trạng thái",
-  align: "center", },
+  { id: "level", label: "Cấp bậc" },
+  { id: "totalOrders", label: "Số lượng đơn", align: "center" },
+
   {
     id: "action",
     label: "Thao tác",
@@ -43,6 +39,22 @@ const headCells = [
   },
 ];
 
+const headCellsManager = [
+  { id: "userId", label: "ID" },
+  { id: "fullName", label: "Tên thợ" },
+
+  { id: "contact", label: "Thông tin liện hệ" },
+  { id: "level", label: "Cấp bậc" },
+  { id: "totalOrders", label: "Số lượng đơn", align: "center" },
+  { id: "userStatus", label: "Trạng thái", align: "center" },
+  {
+    id: "action",
+    label: "Thao tác",
+    disableSorting: true,
+
+    align: "center",
+  },
+];
 const Mechanics = () => {
   useEffect(() => {
     document.title = "Danh sách thợ sửa xe";
@@ -140,7 +152,7 @@ const Mechanics = () => {
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTableV2(
       recordsMechanic,
-      headCells,
+      role === "Admin" ? headCells : headCellsManager,
       filterFn,
       pages,
       page,
@@ -164,7 +176,6 @@ const Mechanics = () => {
           <div className="col-md-12 mb-3">
             <div className="card">
               <div className="px-3 py-4">
-
                 {role === "Manager" ? (
                   <div className="d-flex justify-content-sm-end">
                     <Button
@@ -178,7 +189,6 @@ const Mechanics = () => {
                 ) : (
                   <></>
                 )}
-
               </div>
 
               {/* Table  */}
@@ -195,7 +205,7 @@ const Mechanics = () => {
                         <TableCell sx={{ border: "none" }}>
                           <div className="media align-items-center gap-2">
                             <div>
-                              {role === "admin" ? (
+                              {role === "Admin" ? (
                                 <Link
                                   to={`/admin/mechanic/detail/${item.userId}`}
                                   className="title-color"
@@ -238,7 +248,8 @@ const Mechanics = () => {
                         <TableCell
                           sx={{
                             border: "none",
-                            textAlign:"center", paddingRight:"40px"
+                            textAlign: "center",
+                            paddingRight: "40px",
                           }}
                         >
                           <Link
@@ -249,29 +260,14 @@ const Mechanics = () => {
                           </Link>
                         </TableCell>
                         {/* status */}
-                        <TableCell sx={{ border: "none" ,textAlign:"center", paddingRight:"40px"}}>
-                          {role === "Admin" ? (
-                            <Switches
-                              checked={
-                                item.userMechanicDto?.userStatus === 1
-                                  ? true
-                                  : false
-                              }
-                              onChange={(event) => {
-                                setConfirmDialog({
-                                  isOpen: true,
-                                  title:
-                                    "Bạn có chắc chắn muốn thay đổi trạng thái?",                    
-                                  onConfirm: () => {
-                                    handleSwitchToggle(
-                                      item.userId,
-                                      event.target.checked ? 1 : 0
-                                    );
-                                  },
-                                });
-                              }}
-                            />
-                          ) : (
+                        {role === "Manager" ? (
+                          <TableCell
+                            sx={{
+                              border: "none",
+                              textAlign: "center",
+                              paddingRight: "40px",
+                            }}
+                          >
                             <span
                               className={
                                 item.mechanicStatus === "Available"
@@ -281,11 +277,13 @@ const Mechanics = () => {
                             >
                               {" "}
                               {item.mechanicStatus === "Available"
-                                ? "Khả Dụng"
-                                : "Không Khả Dụng"}{" "}
+                                ? "Rảnh"
+                                : "Đang bận"}{" "}
                             </span>
-                          )}
-                        </TableCell>
+                          </TableCell>
+                        ) : (
+                          <></>
+                        )}
 
                         {/* Action */}
                         <TableCell sx={{ border: "none" }}>
