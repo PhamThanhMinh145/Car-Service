@@ -118,7 +118,7 @@ const MechanicsOrder = ({ bookingId, status }) => {
       status === "Canceled" ||
       status === "Pending" ? (
         <></>
-      ) : role === "Manager" ? (
+      ) : role === "Manager" ?  (
         <div className="row justify-content-end align-items-end mb-4">
           <div className="col-sm-4 col-md-6 col-lg-8 mb-2 mb-sm-0">
             <div className="d-flex justify-content-sm-end">

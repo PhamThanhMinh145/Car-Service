@@ -32,7 +32,7 @@ const headCells = [
   { id: "serviceCost", label: "Giá DV (VND)" },
   { id: "serviceDuration", label: "Thời gian" },
   { id: "serviceWarrantyPeriod", label: "Bảo Hành", align: "center" },
-  { id: "bookingDetailStatus", label: "TT", align: "center" },
+  { id: "bookingDetailStatus", label: "Trạng Thái", align: "center" },
   {
     id: "action",
     label: "Thao tác",
@@ -146,18 +146,30 @@ const OrderDetail = () => {
   const addWarrantyBooking = (data, resetForm) => {
 
     // console.log({bookingId:id , ...data});
-    dispatch(AddWarrantyBookingg({ bookingId: id, ...data }))
-    resetForm();
-    setOpenPopup(false);
-    if (addSuccessAction) {
-      dispatch(resetStateBooking());
-      dispatch(getDetailBooking(id))
+
+    if(data.serviceList.length > 0) {
+
+      dispatch(AddWarrantyBookingg({ bookingId: id, ...data }))
+      resetForm();
+      setOpenPopup(false);
+      if (addSuccessAction) {
+        dispatch(resetStateBooking());
+        dispatch(getDetailBooking(id))
+        setNotify({
+          isOpen: true,
+          message: "Add Successfully",
+          type: "success",
+        });
+      }
+    }else {
+      setOpenPopup(true);
       setNotify({
         isOpen: true,
-        message: "Add Successfully",
-        type: "success",
+        message: "Hãy chọn dịch vụ để bảo hành",
+        type: "error",
       });
     }
+      
   };
   return (
     <>

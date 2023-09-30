@@ -33,11 +33,11 @@ const MenuProps = {
 
 const useDetail = () => {
   const detail = useSelector((state) => state.booking.detail);
-
+  
   const newServices = useMemo(() => {
     return detail.map((item) =>
       item?.serviceBookingDetailDto.serviceWarranty !== "" &&
-      item.isNew === true
+      item?.isNew === true && item?.bookingDetailStatus === "Done"
         ? {
             serviceId: item?.serviceDetailId,
             serviceDuration: item?.serviceBookingDetailDto?.serviceDuration,
@@ -70,7 +70,7 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
       ),
       garageId: garageId,
     };
-
+    
     dispatch(GetTimeBooking(data));
   }, [date, service, dispatch, garageId]);
 
@@ -183,7 +183,7 @@ const AddWarrantyBooking = ({ addWarrantyBooking }) => {
           className="add-button"
           onClick={handleSubmit}
           size="medium"
-          text="Submit"
+          text="Lưu"
         />
         <Button
           variant="outlined"

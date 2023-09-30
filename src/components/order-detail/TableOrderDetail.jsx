@@ -133,7 +133,7 @@ const TableOrderDetail = ({
                     {item.serviceBookingDetailDto?.serviceCost}
                   </TableCell>
                   <TableCell sx={{ border: "none", textAlign:"center" , paddingRight:"30px" }}>
-                    {item.serviceBookingDetailDto?.serviceDuration}
+                    {item.serviceBookingDetailDto?.serviceDuration} giờ
                   </TableCell>
                   <TableCell sx={{ border: "none" }}>
                     {item.serviceBookingDetailDto?.serviceWarranty === ""

@@ -42,7 +42,8 @@ const headCellsManager = [
   { id: "productImage", label: "Hình ảnh", align: "left" },
 
   { id: "productName", label: "Tên Sản Phẩm" },
-  { id: "productPrice", label: "Gía" },
+  { id: "productPrice", label: "Giá" },
+  { id: "productWarrantyPeriod", label: "Sô tháng BH",align: "center", },
   // { id: "productQuantity", label: "Quantity" },
   { id: "productStatus", label: "Trạng thái" },
 ];
@@ -246,7 +247,7 @@ const Products = () => {
                                   : "badge badge-soft-danger fz-12"
                               }
                             >
-                              {item.productStatus}
+                              {item.productStatus === "Activate" ? ("Khả dụng") : ("Không Khả Dụng")}
                             </span>
                           </TableCell>
                         )}
