@@ -81,7 +81,7 @@ const AddNewMechanicForBooking = ({ addMechanicBooking }) => {
             className="add-button"
             onClick={handleSubmit}
             size="medium"
-            text="Submit"
+            text="Lưu"
           />
           <Button
             fullWidth
