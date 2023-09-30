@@ -27,8 +27,8 @@ const headCells = [
   { id: "userId", label: "ID" },
   { id: "fullName", label: "Tên khách hàng" },
   { id: "userEmail", label: "Thông tin khách hàng" },
-  { id: "totalBooking", label: "SL đơn hàng" ,align:"center"},
-  { id: "userStatus", label: "Hoạt động/Cấm" ,align:"center"},
+  { id: "totalBooking", label: "Số lượng đơn hàng" },
+  { id: "userStatus", label: "Hoạt động/Cấm" },
   {
     id: "action",
     label: "Thao tác",

@@ -167,13 +167,13 @@ const CouponGarage = () => {
                           <TableCell sx={{ border: "none" }}>
                             <span
                               className={
-                                item.couponStatus === "Activate"
+                                item?.couponStatus === "Active"
                                   ? "badge badge-soft-success fz-12"
                                   : "badge badge-soft-danger fz-12"
                               }
                             >
                               {" "}
-                              {item.couponStatus === "Activate"
+                              {item?.couponStatus === "Active"
                                 ? "Hoạt động"
                                 : "Không hoạt động"}{" "}
                             </span>
