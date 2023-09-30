@@ -27,9 +27,9 @@ const headCells = [
   { id: "garageContactInformation", label: "SĐT" },
 
   { id: "garageStatus", label: "Trạng thái" },
-  { id: "totalServices", label: "Tổng số dịch vụ" },
+  { id: "totalServices", label: "Tổng số dịch vụ", align:"center" },
   // { id: "", label: "Total Product" },
-  { id: "totalOrders", label: "Tổng đơn hàng" },
+  { id: "totalOrders", label: "Tổng đơn hàng", align:"center" },
 
   {
     id: "action",
@@ -217,7 +217,7 @@ const Onwers = () => {
                         {/* Total Service */}
                         <TableCell
                           sx={{
-                            border: "none",
+                            border: "none", textAlign:"center", paddingRight:"40px"
                           }}
                         >
                           <Link
@@ -231,7 +231,7 @@ const Onwers = () => {
                         {/* Total Order */}
                         <TableCell
                           sx={{
-                            border: "none",
+                            border: "none", textAlign:"center", paddingRight:"40px"
                           }}
                         >
                           <Link

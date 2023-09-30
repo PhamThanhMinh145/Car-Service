@@ -29,9 +29,11 @@ const headCells = [
   { id: "fullName", label: "Tên thợ" },
 
   { id: "contact", label: "Thông tin liện hệ" },
-  { id: "level", label: "Cấp bậc" },
-  { id: "totalOrders", label: "SL đơn" },
-  { id: "userStatus", label: "Trạng thái" },
+   { id: "level", label: "Cấp bậc" },
+  { id: "totalOrders", label: "SL đơn" ,
+  align: "center",},
+  { id: "userStatus", label: "Trạng thái",
+  align: "center", },
   {
     id: "action",
     label: "Thao tác",
@@ -236,6 +238,7 @@ const Mechanics = () => {
                         <TableCell
                           sx={{
                             border: "none",
+                            textAlign:"center", paddingRight:"40px"
                           }}
                         >
                           <Link
@@ -246,8 +249,7 @@ const Mechanics = () => {
                           </Link>
                         </TableCell>
                         {/* status */}
-
-                        <TableCell sx={{ border: "none" }}>
+                        <TableCell sx={{ border: "none" ,textAlign:"center", paddingRight:"40px"}}>
                           {role === "Admin" ? (
                             <Switches
                               checked={
@@ -259,8 +261,7 @@ const Mechanics = () => {
                                 setConfirmDialog({
                                   isOpen: true,
                                   title:
-                                    "Bạn có chắc chắn muốn thay đổi trạng thái?",
-                                  subTitle: "Bạn không thể hoàn tác thao tác này",
+                                    "Bạn có chắc chắn muốn thay đổi trạng thái?",                    
                                   onConfirm: () => {
                                     handleSwitchToggle(
                                       item.userId,

@@ -25,8 +25,8 @@ const headCells = [
 
   { id: "userEmail", label: "Email" },
   { id: "userPhone", label: "SĐT" },
-  { id: "roleName", label: "Vai trò" },
-  { id: "userStatus", label: "Trạng thái" },
+  { id: "roleName", label: "Vai trò", align:"center" },
+  { id: "userStatus", label: "Trạng thái" ,align:"center"},
   // {
   //   id: "action",
   //   label: "Thao tác",
@@ -168,10 +168,10 @@ const Employees = () => {
                       <TableCell sx={{ border: "none" }}>
                         <div>{item.userPhone}</div>
                       </TableCell>
-                      <TableCell sx={{ border: "none" }}>
+                      <TableCell sx={{ border: "none" , textAlign:"center", paddingRight:"40px"}}>
                         <div>{item.roleDto?.roleName}</div>
                       </TableCell>
-                      <TableCell sx={{ border: "none" }}>
+                      <TableCell sx={{ border: "none"  ,textAlign:"center", paddingRight:"40px"}}>
                         <Switches
                           checked={
                             item.userStatus === "Activate" ? true : false
