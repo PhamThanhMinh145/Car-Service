@@ -190,13 +190,13 @@ const Customers = () => {
                       </Link>
                     </TableCell>
                     {/* Quantity Ordered */}
-                    <TableCell sx={{ border: "none" }}>
+                    <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"40px" }}>
                       <label className="btn text-info bg-soft-info font-weight-bold px-3 py-1 mb-0 fz-12">
                         {item.totalBooking}
                       </label>
                     </TableCell>
                     {/* Block and unblock */}
-                    <TableCell sx={{ border: "none" }}>
+                    <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"40px" }}>
                       <Switches
                         checked={item.userStatus === "Activate" ? true : false}
                         onChange={(event) => {
@@ -215,7 +215,7 @@ const Customers = () => {
                       />
                     </TableCell>
                     {/* Action */}
-                    <TableCell sx={{ border: "none" }}>
+                    <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"40px" }}>
                       <div className="d-flex justify-content-center gap-2">
                         <Tooltip title="Chi tiết" arrow>
                           {role === "Admin" ? (

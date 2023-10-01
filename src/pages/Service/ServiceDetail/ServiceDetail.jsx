@@ -22,8 +22,9 @@ const headCells = [
   {
     id: "minNumberOfCarLot",
     label: "Số ghế nhỏ nhất",
+    align: "center"
   },
-  { id: "maxNumberOfCarLot", label: "Số ghế tối đa" },
+  { id: "maxNumberOfCarLot", label: "Số ghế tối đa" , align: "center"},
   {
     id: "action",
     label: "Thao tác",
@@ -38,8 +39,9 @@ const headCellsManager = [
   {
     id: "minNumberOfCarLot",
     label: "Số ghế nhỏ nhất",
+    align: "center",
   },
-  { id: "maxNumberOfCarLot", label: "Số ghế tối đa" },
+  { id: "maxNumberOfCarLot", label: "Số ghế tối đa"  , align: "center",},
   
 ];
 
@@ -184,7 +186,7 @@ const ServiceDetail = () => {
                               {item.status === "ACTIVE"
                                 ? "Khả dụng"
                                 : "Không khả dụng"}{" "} */}
-                              {serviceInfo.serviceStatus}
+                              {serviceInfo.serviceStatus === "Activate" ? "Khả Dụng" : "Không Khả dụng"}
                             </div>
                           </span>
                         </span>
@@ -237,10 +239,10 @@ const ServiceDetail = () => {
                           >
                             {item.servicePrice}
                           </TableCell>
-                          <TableCell sx={{ border: "none" }}>
+                          <TableCell sx={{ border: "none" , textAlign:"center", paddingRight:"40px"}}>
                             <div>{item.minNumberOfCarLot}</div>
                           </TableCell>
-                          <TableCell sx={{ border: "none" }}>
+                          <TableCell sx={{ border: "none" ,  textAlign:"center", paddingRight:"40px"}}>
                             {item.maxNumberOfCarLot}
                           </TableCell>
 

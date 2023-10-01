@@ -21,11 +21,11 @@ import authService from "../../features/auth/authService";
 
 const headCells = [
   { id: "userId", label: "ID" },
-  { id: "fullName", label: "Tên nhân viên" },
+  { id: "fullName", label: "Tên nhân viên", align:"center" },
 
   { id: "userEmail", label: "Email" },
-  { id: "userPhone", label: "SĐT" },
-  { id: "userStatus", label: "Trạng thái" },
+  { id: "userPhone", label: "Số điện thoại", align:"center"},
+  { id: "userStatus", label: "Trạng thái" ,align:"center"},
   // {
   //   id: "action",
   //   label: "Thao tác",
@@ -162,17 +162,17 @@ const Staffs = () => {
                       <TableCell sx={{ border: "none" }}>
                         <div>{item.userId}</div>
                       </TableCell>
-                      <TableCell sx={{ border: "none" }}>
+                      <TableCell sx={{ border: "none", textAlign:"center", paddingRight:"40px" }}>
                         <div>{item.fullName}</div>
                       </TableCell>
                       <TableCell sx={{ border: "none" }}>
                         <div>{item.userEmail}</div>
                       </TableCell>
-                      <TableCell sx={{ border: "none" }}>
+                      <TableCell sx={{ border: "none" , textAlign:"center", paddingRight:"40px" }}>
                         <div>{item.userPhone}</div>
                       </TableCell>
                       
-                      <TableCell sx={{ border: "none" }}>
+                      <TableCell sx={{ border: "none" , textAlign:"center", paddingRight:"40px"}}>
                         <Switches
                           checked={
                             item.userStatus === "Activate" ? true : false
