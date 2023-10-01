@@ -220,7 +220,9 @@ const MechanicDetail = () => {
                                         : "badge text-success fz-12 px-0"
                                     }
                                   >
-                                    {item.paymentStatus}
+                              {item.paymentStatus === "Unpaid"
+                                ? "Chưa thanh toán"
+                                : "Đã thanh toán"}{" "}
                                   </span>
                                 </TableCell>
 
